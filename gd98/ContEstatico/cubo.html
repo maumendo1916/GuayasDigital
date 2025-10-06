@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubo 3D Animado</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            gap: 100px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .cube-section {
+            text-align: center;
+        }
+
+            .cube-section h3 {
+                color: white;
+                margin-bottom: 30px;
+                font-size: 24px;
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+
+        /* Cubo Rubik */
+        .rubik-container {
+            perspective: 1000px;
+            width: 41px;
+            height: 41px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .rubik-cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotateRubik 8s infinite linear;
+        }
+
+        .rubik-face {
+            position: absolute;
+            width: 41px;
+            height: 41px;
+            display: grid;
+            grid-template-columns: repeat(3, 11px);
+            grid-template-rows: repeat(3, 11px);
+            gap: 2px;
+            padding: 2px;
+            /* Eliminamos el borde de la cara */
+            border: none;
+        }
+
+        .rubik-square {
+            width: 11px;
+            height: 11px;
+            /* Mantenemos el borde gris solo en los cuadrados */
+            border: 1px solid #999;
+            border-radius: 3px;
+        }
+
+        .rubik-front {
+            transform: rotateY(0deg) translateZ(20.5px);
+        }
+
+        .rubik-back {
+            transform: rotateY(180deg) translateZ(20.5px);
+        }
+
+        .rubik-right {
+            transform: rotateY(90deg) translateZ(20.5px);
+        }
+
+        .rubik-left {
+            transform: rotateY(-90deg) translateZ(20.5px);
+        }
+
+        .rubik-top {
+            transform: rotateX(90deg) translateZ(20.5px);
+        }
+
+        .rubik-bottom {
+            transform: rotateX(-90deg) translateZ(20.5px);
+        }
+
+        /* Colores del Cubo Rubik */
+        .white {
+            background-color: #ffffff;
+        }
+
+        .yellow {
+            background-color: #ffff00;
+        }
+
+        .red {
+            background-color: #ff0000;
+        }
+
+        .orange {
+            background-color: #ff8c00;
+        }
+
+        .blue {
+            background-color: #0000ff;
+        }
+
+        .green {
+            background-color: #00ff00;
+        }
+
+        @keyframes rotateRubik {
+            0% {
+                transform: rotateX(-15deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            25% {
+                transform: rotateX(15deg) rotateY(90deg) rotateZ(0deg);
+            }
+
+            50% {
+                transform: rotateX(0deg) rotateY(180deg) rotateZ(15deg);
+            }
+
+            75% {
+                transform: rotateX(-15deg) rotateY(270deg) rotateZ(0deg);
+            }
+
+            100% {
+                transform: rotateX(-15deg) rotateY(360deg) rotateZ(0deg);
+            }
+        }
+
+        /* Tooltip */
+        .rubik-container:hover::after {
+            content: 'Bienvenido';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .rubik-container {
+                width: 35px;
+                height: 35px;
+            }
+
+            .rubik-face {
+                width: 35px;
+                height: 35px;
+                grid-template-columns: repeat(3, 9px);
+                grid-template-rows: repeat(3, 9px);
+                gap: 1px;
+                padding: 1px;
+                border: none;
+            }
+
+            .rubik-square {
+                width: 9px;
+                height: 9px;
+                border: 0.5px solid #999;
+                border-radius: 2px;
+            }
+
+            .rubik-front {
+                transform: rotateY(0deg) translateZ(17.5px);
+            }
+
+            .rubik-back {
+                transform: rotateY(180deg) translateZ(17.5px);
+            }
+
+            .rubik-right {
+                transform: rotateY(90deg) translateZ(17.5px);
+            }
+
+            .rubik-left {
+                transform: rotateY(-90deg) translateZ(17.5px);
+            }
+
+            .rubik-top {
+                transform: rotateX(90deg) translateZ(17.5px);
+            }
+
+            .rubik-bottom {
+                transform: rotateX(-90deg) translateZ(17.5px);
+            }
+
+            .rubik-container:hover::after {
+                top: -30px;
+                font-size: 12px;
+                padding: 3px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cubo Rubik -->
+        <div class="cube-section">
+            <div class="rubik-container">
+                <div class="rubik-cube">
+                    <!-- Cara Frontal (Blanca) -->
+                    <div class="rubik-face rubik-front">
+                        <div class="rubik-square white"></div>
+                        <div class="rubik-square white"></div>
+                        <div class="rubik-square white"></div>
+                        <div class="rubik-square white"></div>
+                        <div class="rubik-square white"></div>
+                        <div class="rubik-square white"></div>
+                        <div class="rubik-square white"></div>
+                        <div class="rubik-square white"></div>
+                        <div class="rubik-square white"></div>
+                    </div>
+
+                    <!-- Cara Trasera (Amarilla) -->
+                    <div class="rubik-face rubik-back">
+                        <div class="rubik-square yellow"></div>
+                        <div class="rubik-square yellow"></div>
+                        <div class="rubik-square yellow"></div>
+                        <div class="rubik-square yellow"></div>
+                        <div class="rubik-square yellow"></div>
+                        <div class="rubik-square yellow"></div>
+                        <div class="rubik-square yellow"></div>
+                        <div class="rubik-square yellow"></div>
+                        <div class="rubik-square yellow"></div>
+                    </div>
+
+                    <!-- Cara Derecha (Roja) -->
+                    <div class="rubik-face rubik-right">
+                        <div class="rubik-square red"></div>
+                        <div class="rubik-square red"></div>
+                        <div class="rubik-square red"></div>
+                        <div class="rubik-square red"></div>
+                        <div class="rubik-square red"></div>
+                        <div class="rubik-square red"></div>
+                        <div class="rubik-square red"></div>
+                        <div class="rubik-square red"></div>
+                        <div class="rubik-square red"></div>
+                    </div>
+
+                    <!-- Cara Izquierda (Naranja) -->
+                    <div class="rubik-face rubik-left">
+                        <div class="rubik-square orange"></div>
+                        <div class="rubik-square orange"></div>
+                        <div class="rubik-square orange"></div>
+                        <div class="rubik-square orange"></div>
+                        <div class="rubik-square orange"></div>
+                        <div class="rubik-square orange"></div>
+                        <div class="rubik-square orange"></div>
+                        <div class="rubik-square orange"></div>
+                        <div class="rubik-square orange"></div>
+                    </div>
+
+                    <!-- Cara Superior (Azul) -->
+                    <div class="rubik-face rubik-top">
+                        <div class="rubik-square blue"></div>
+                        <div class="rubik-square blue"></div>
+                        <div class="rubik-square blue"></div>
+                        <div class="rubik-square blue"></div>
+                        <div class="rubik-square blue"></div>
+                        <div class="rubik-square blue"></div>
+                        <div class="rubik-square blue"></div>
+                        <div class="rubik-square blue"></div>
+                        <div class="rubik-square blue"></div>
+                    </div>
+
+                    <!-- Cara Inferior (Verde) -->
+                    <div class="rubik-face rubik-bottom">
+                        <div class="rubik-square green"></div>
+                        <div class="rubik-square green"></div>
+                        <div class="rubik-square green"></div>
+                        <div class="rubik-square green"></div>
+                        <div class="rubik-square green"></div>
+                        <div class="rubik-square green"></div>
+                        <div class="rubik-square green"></div>
+                        <div class="rubik-square green"></div>
+                        <div class="rubik-square green"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,249 @@
+/* =============================================
+   REPRODUCTOR DE MÚSICA - ESTILOS ACTUALIZADOS
+   ============================================= */
+
+/* Contenedor principal del reproductor */
+#music-player {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    max-width: 100%;
+}
+
+    #music-player:hover {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    /* Botones del reproductor */
+    #music-player .btn {
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+        #music-player .btn:hover {
+            transform: scale(1.15);
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #music-player .btn:active {
+            transform: scale(0.95);
+        }
+
+/* Botón de play/pause más destacado */
+#play-pause-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #667eea !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+    width: 42px;
+    height: 42px;
+}
+
+    #play-pause-btn:hover {
+        background: white !important;
+        transform: scale(1.2);
+    }
+
+/* Botón shuffle cuando está activo */
+#shuffle-btn.btn-success {
+    background: rgba(76, 175, 80, 0.9) !important;
+    border-color: rgba(76, 175, 80, 0.9) !important;
+    color: white !important;
+}
+
+/* Información de la canción */
+#current-song {
+    color: white;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* Elemento de audio - Ahora más prominente */
+#audio-player {
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    width: 100%;
+    height: 40px;
+}
+
+    #audio-player::-webkit-media-controls-panel {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+/* Control de volumen */
+#volume-btn {
+    width: 35px;
+    height: 35px;
+}
+
+#volume-slider {
+    width: 80px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    outline: none;
+}
+
+    #volume-slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        transition: all 0.2s ease;
+    }
+
+        #volume-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+    #volume-slider::-moz-range-thumb {
+        width: 16px;
+        height: 16px;
+        background: white;
+        border-radius: 50%;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+/* Footer mejorado */
+.footer {
+    padding: 20px 0;
+    border-top: 1px solid #e9ecef;
+    margin-top: 30px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+/* Animaciones de carga */
+@keyframes pulse {
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #music-player {
+        padding: 12px;
+        border-radius: 10px;
+    }
+
+    #current-song {
+        font-size: 0.8rem;
+        margin-bottom: 8px;
+    }
+
+    #music-player .btn {
+        width: 35px;
+        height: 35px;
+        margin: 0 1px;
+    }
+
+    #play-pause-btn {
+        width: 38px;
+        height: 38px;
+    }
+
+    #volume-slider {
+        width: 60px;
+    }
+
+    #audio-player {
+        height: 35px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer .row {
+        text-align: center;
+    }
+
+    .footer .col-md-6 {
+        margin-bottom: 15px;
+    }
+
+    #current-song {
+        font-size: 0.75rem;
+    }
+
+    #music-player .btn {
+        width: 32px;
+        height: 32px;
+    }
+
+    #play-pause-btn {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* Estados de los iconos */
+.bi-play-fill, .bi-pause-fill {
+    font-size: 16px;
+}
+
+.bi-skip-backward-fill, .bi-skip-forward-fill, .bi-shuffle {
+    font-size: 14px;
+}
+
+.bi-volume-up-fill, .bi-volume-mute-fill {
+    font-size: 14px;
+}
+
+/* Efectos hover adicionales */
+#music-player .btn i {
+    transition: all 0.2s ease;
+}
+
+#music-player .btn:hover i {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Tema oscuro (opcional) */
+@media (prefers-color-scheme: dark) {
+    .footer {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        color: white;
+    }
+
+    #music-player {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+}

@@ -1,0 +1,213 @@
+﻿/* Estilos generales del body y contenido */
+body {
+    font-size: 18px;
+    font-family: 'Roboto', Arial, sans-serif;
+    background: #f7f7f7;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    flex: 1;
+    padding-top: 80px;
+}
+
+p {
+    text-align: justify;
+}
+
+/* Navbar */
+.navbar {
+    background-color: white !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar-brand img:first-child {
+    width: 100px;
+    height: auto;
+}
+
+.navbar-brand img:last-child {
+    width: 280px;
+    height: auto;
+}
+
+.navbar-nav .nav-link {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333 !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: #ff0044 !important;
+        text-decoration: none;
+    }
+
+/* Dropdown */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-top: 0;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    transition: all 0.3s ease;
+}
+
+    .dropdown-item:hover {
+        background-color: #ff0044;
+        color: white;
+    }
+
+/* Formularios */
+.form-header {
+    color: #000000;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.btn-custom {
+    background-color: #ff5a5f;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+    .btn-custom:hover {
+        background-color: #ff6f6f;
+        color: white;
+    }
+
+/* Upload box */
+.upload-box {
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+    .upload-box:hover,
+    .upload-box.drag-over {
+        background-color: #f1f1f1;
+        border-color: #ff5a5f;
+    }
+
+.custom-file-upload {
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.file-input {
+    display: none;
+}
+
+#file-name {
+    color: #6c757d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-brand img {
+        height: 30px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+    .form-header {
+        font-size: 1.5rem;
+    }
+}
+
+/* Estilo para el contador de visitas - versión compacta */
+.contador-container {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-radius: 12px;
+    padding: 10px 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 2px solid #333;
+    display: inline-block;
+    text-align: center;
+    max-width: 220px; /* Limitar ancho */
+}
+
+.contador-titulo {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    font-family: 'Arial', sans-serif;
+}
+
+.contador-numero {
+    background: #000;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: 'Orbitron', 'Courier New', monospace;
+    font-size: 22px; /* Reducido de 28px */
+    font-weight: bold;
+    color: #ff4500;
+    text-shadow: 0 0 5px #ff4500, 0 0 10px #ff4500, 0 0 15px #ff4500;
+    border: 1px solid #333;
+    letter-spacing: 1px; /* Reducido de 3px */
+    min-width: 120px; /* Reducido de 200px */
+    display: inline-block;
+    position: relative;
+}
+
+    .contador-numero .digit {
+        display: inline-block;
+        transition: opacity 0.1s ease, text-shadow 0.1s ease;
+    }
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .contador-container {
+        max-width: 180px;
+        padding: 8px 12px;
+    }
+
+    .contador-titulo {
+        font-size: 10px;
+        margin-bottom: 6px;
+    }
+
+    .contador-numero {
+        font-size: 18px;
+        padding: 6px 10px;
+        min-width: 100px;
+        letter-spacing: 0.5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .contador-container {
+        max-width: 160px;
+    }
+
+    .contador-numero {
+        font-size: 16px;
+        min-width: 90px;
+    }
+}
